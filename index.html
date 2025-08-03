@@ -1,0 +1,125 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>Vorionex - Universal Unit Converter</title>
+    <style>
+        /* Simple clean CSS styles */
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            background: #0a192f;
+            color: #ccd6f6;
+            margin: 0;
+            padding: 0;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            min-height: 100vh;
+        }
+        .container {
+            background: #112240;
+            padding: 2rem;
+            border-radius: 10px;
+            max-width: 400px;
+            width: 90%;
+            box-shadow: 0 0 20px #64ffda;
+        }
+        h1 {
+            text-align: center;
+            color: #64ffda;
+        }
+        label {
+            display: block;
+            margin-top: 1rem;
+            font-weight: bold;
+        }
+        input[type="number"] {
+            width: 100%;
+            padding: 0.5rem;
+            border-radius: 5px;
+            border: none;
+            margin-top: 0.3rem;
+        }
+        button {
+            margin-top: 1.5rem;
+            width: 100%;
+            padding: 0.7rem;
+            border: none;
+            border-radius: 7px;
+            background-color: #64ffda;
+            color: #0a192f;
+            font-weight: bold;
+            cursor: pointer;
+            font-size: 1rem;
+            transition: background-color 0.3s ease;
+        }
+        button:hover {
+            background-color: #52e0c4;
+        }
+        .result {
+            margin-top: 1.5rem;
+            background-color: #233554;
+            padding: 1rem;
+            border-radius: 7px;
+            font-size: 1.1rem;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>Vorionex Universal Unit Converter</h1>
+
+        <!-- Length -->
+        <label for="kmInput">Distance in kilometers:</label>
+        <input type="number" id="kmInput" placeholder="Enter km" />
+
+        <!-- Temperature -->
+        <label for="celsiusInput">Temperature in Celsius:</label>
+        <input type="number" id="celsiusInput" placeholder="Enter °C" />
+
+        <!-- Currency -->
+        <label for="inrInput">Amount in INR:</label>
+        <input type="number" id="inrInput" placeholder="Enter ₹" />
+
+        <button onclick="convertUnits()">Convert Now</button>
+
+        <div id="result" class="result"></div>
+    </div>
+
+    <script>
+        function convertUnits() {
+            // Get input values
+            const km = parseFloat(document.getElementById('kmInput').value);
+            const celsius = parseFloat(document.getElementById('celsiusInput').value);
+            const inr = parseFloat(document.getElementById('inrInput').value);
+
+            let resultText = '';
+
+            // Validate and convert km to miles
+            if (!isNaN(km)) {
+                const miles = (km * 0.621371).toFixed(2);
+                resultText += `${km} km = ${miles} miles<br>`;
+            }
+
+            // Validate and convert Celsius to Fahrenheit
+            if (!isNaN(celsius)) {
+                const fahrenheit = ((celsius * 9/5) + 32).toFixed(2);
+                resultText += `${celsius}°C = ${fahrenheit}°F<br>`;
+            }
+
+            // Validate and convert INR to USD (fixed rate: 1 USD = 83 INR)
+            if (!isNaN(inr)) {
+                const usd = (inr / 83).toFixed(2);
+                resultText += `₹${inr} = $${usd} USD<br>`;
+            }
+
+            if (resultText === '') {
+                resultText = 'Please enter at least one value to convert.';
+            }
+
+            document.getElementById('result').innerHTML = resultText;
+        }
+    </script>
+</body>
+</html>
