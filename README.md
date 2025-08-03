@@ -20,7 +20,7 @@ Welcome to **Vorionex**, a simple and easy-to-use web app for converting units l
 - JavaScript (Vanilla)
 
 ## Live Demo
-Visit the live website here: [https://vaibhavigps.co.in]
+Visit the live website here: [https:/127.0.0.1:5500/index.html]
 
 ## Contribution
 Feel free to fork this repo and contribute by adding more unit conversions or improvements!
@@ -30,6 +30,6 @@ This project is licensed under the MIT License.
 
 ---
 
-Created with ❤️ by [Your Name or Username]
+Created with ❤️ by VORIONEX
 
 
